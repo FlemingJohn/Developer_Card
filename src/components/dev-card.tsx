@@ -38,7 +38,7 @@ export function DevCard() {
             width={128}
             height={128}
             className="rounded-full border-4 border-primary/50 object-cover shadow-lg transition-all duration-300 group-hover:border-accent"
-            data-ai-hint="profile photo"
+            data-ai-hint="man portrait"
           />
         </div>
 
