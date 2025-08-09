@@ -64,7 +64,7 @@ export function DevCard() {
         <div className="relative z-10 flex flex-col items-center gap-6 p-6 text-center text-foreground md:flex-row md:p-8 md:text-left md:gap-8">
           <div className="flex-shrink-0">
             <Image
-              src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYW58ZW58MHx8fHwxNzU0NjI4MzUwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+              src="https://images.unsplash.com/photo-1542410613-d073472c3135?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNXx8YmF0bWFufGVufDB8fHx8MTc1NDY0NzgzOXww&ixlib=rb-4.1.0&q=80&w=1080"
               alt="Developer's profile picture"
               width={128}
               height={128}
