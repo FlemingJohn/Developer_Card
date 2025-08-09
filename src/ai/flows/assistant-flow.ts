@@ -77,6 +77,9 @@ const askAssistantFlow = ai.defineFlow(
   },
   async (input) => {
     const { output } = await prompt(input);
-    return output!;
+    if (!output) {
+      return { answer: "Sorry, I couldn't come up with a response. Please try rephrasing your question." };
+    }
+    return output;
   }
 );
