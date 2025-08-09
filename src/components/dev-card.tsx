@@ -2,7 +2,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Github, Linkedin, Link as LinkIcon, MessageSquare, User, BarChart } from 'lucide-react';
+import { Github, Linkedin, Link as LinkIcon, MessageSquare, User, BarChart, BrainCircuit, Zap, GitBranch, GraduationCap, TrendingUp } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { useState, useEffect } from 'react';
@@ -42,7 +42,7 @@ const devData = {
       { name: 'Problem Solving', level: 95, icon: 'BrainCircuit', color: 'hsl(var(--chart-1))' },
       { name: 'Dev Speed', level: 85, icon: 'Zap', color: 'hsl(var(--chart-2))' },
       { name: 'Adaptability', level: 90, icon: 'GitBranch', color: 'hsl(var(--chart-3))' },
-      { name: 'Grasping Power', level: 92, icon: 'GraduationCap', color: 'hsl(var(--chart-4))' },
+      { name: 'Grasping', level: 92, icon: 'GraduationCap', color: 'hsl(var(--chart-4))' },
       { name: 'Productivity', level: 88, icon: 'TrendingUp', color: 'hsl(var(--chart-5))' },
     ]
   }

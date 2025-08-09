@@ -16,7 +16,6 @@ interface PlayerStatsProps {
   stats: PlayerStat[];
 }
 
-// A little hack to get around the fact that recharts doesn't pass the full data item to the tick formatter
 const CustomYAxisTick = ({ y, payload, stats }: any) => {
   const stat = stats.find((s: PlayerStat) => s.name === payload.value);
   if (!stat) return null;
@@ -25,10 +24,10 @@ const CustomYAxisTick = ({ y, payload, stats }: any) => {
 
   return (
     <g transform={`translate(0,${y})`}>
-      <foreignObject x={0} y={-10} width={110} height={20} className="overflow-visible">
-        <div className="flex items-center gap-2 text-accent text-xs">
+      <foreignObject x={-12} y={-10} width={130} height={22} className="overflow-visible">
+        <div className="flex items-center justify-end gap-2 text-accent text-xs pr-2">
+          <span className="truncate text-right">{stat.name}</span>
           {Icon && <Icon className="w-4 h-4" style={{ color: stat.color }} />}
-          <span className="truncate">{stat.name}</span>
         </div>
       </foreignObject>
     </g>
@@ -49,7 +48,7 @@ export function PlayerStats({ stats }: PlayerStatsProps) {
       <h3 className="text-lg font-headline text-center text-accent mb-4">Core Abilities</h3>
       <ChartContainer config={chartConfig} className="w-full h-[250px]">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={stats} layout="vertical" margin={{ left: 10, right: 40, top: 5, bottom: 5 }}>
+          <BarChart data={stats} layout="vertical" margin={{ left: 20, right: 40, top: 5, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--primary) / 0.1)" horizontal={true} vertical={false} />
             <XAxis type="number" domain={[0, 100]} hide />
             <YAxis
@@ -58,7 +57,7 @@ export function PlayerStats({ stats }: PlayerStatsProps) {
               tickLine={false}
               axisLine={false}
               tick={<CustomYAxisTick stats={stats} />}
-              width={110}
+              width={120}
             />
             <Bar dataKey="level" radius={[0, 4, 4, 0]} barSize={20}>
               {stats.map((stat) => (
