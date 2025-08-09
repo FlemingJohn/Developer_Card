@@ -10,7 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['"Press Start 2P"', 'monospace'],
+        body: ['"Source Code Pro"', 'monospace'],
         headline: ['"Press Start 2P"', 'monospace'],
         code: ['monospace'],
       },
