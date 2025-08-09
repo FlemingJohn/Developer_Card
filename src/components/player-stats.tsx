@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, LabelList } from 'recharts';
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, LabelList, Cell } from 'recharts';
 import { ChartContainer } from '@/components/ui/chart';
 import * as LucideIcons from 'lucide-react';
 
@@ -60,11 +60,12 @@ export function PlayerStats({ stats }: PlayerStatsProps) {
               tick={<CustomYAxisTick stats={stats} />}
               width={110}
             />
-            {stats.map((stat) => (
-               <Bar key={stat.name} dataKey="level" fill={stat.color} radius={[0, 4, 4, 0]} barSize={20} data={[stat]}>
-                 <LabelList dataKey="level" position="right" offset={10} className="fill-foreground" fontSize={12} formatter={(value: number) => `${value}%`} />
-               </Bar>
-            ))}
+            <Bar dataKey="level" radius={[0, 4, 4, 0]} barSize={20}>
+              {stats.map((stat) => (
+                <Cell key={stat.name} fill={stat.color} />
+              ))}
+              <LabelList dataKey="level" position="right" offset={10} className="fill-foreground" fontSize={12} formatter={(value: number) => `${value}%`} />
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </ChartContainer>
