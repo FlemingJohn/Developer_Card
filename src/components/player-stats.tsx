@@ -3,24 +3,47 @@
 
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, LabelList } from 'recharts';
 import { ChartContainer } from '@/components/ui/chart';
+import * as LucideIcons from 'lucide-react';
 
 interface PlayerStat {
   name: string;
   level: number;
+  icon: keyof typeof LucideIcons;
+  color: string;
 }
 
 interface PlayerStatsProps {
   stats: PlayerStat[];
 }
 
-const chartConfig = {
-  level: {
-    label: "Mastery",
-    color: "hsl(var(--primary))",
-  },
+// A little hack to get around the fact that recharts doesn't pass the full data item to the tick formatter
+const CustomYAxisTick = ({ y, payload, stats }: any) => {
+  const stat = stats.find((s: PlayerStat) => s.name === payload.value);
+  if (!stat) return null;
+
+  const Icon = LucideIcons[stat.icon as keyof typeof LucideIcons] as React.ElementType;
+
+  return (
+    <g transform={`translate(0,${y})`}>
+      <foreignObject x={0} y={-10} width={110} height={20} className="overflow-visible">
+        <div className="flex items-center gap-2 text-accent text-xs">
+          {Icon && <Icon className="w-4 h-4" style={{ color: stat.color }} />}
+          <span className="truncate">{stat.name}</span>
+        </div>
+      </foreignObject>
+    </g>
+  );
 };
 
 export function PlayerStats({ stats }: PlayerStatsProps) {
+  const chartConfig = stats.reduce((acc, stat) => {
+    acc[stat.name] = {
+      label: stat.name,
+      color: stat.color,
+    };
+    return acc;
+  }, {} as any);
+  
   return (
     <div>
       <h3 className="text-lg font-headline text-center text-accent mb-4">Core Abilities</h3>
@@ -34,12 +57,14 @@ export function PlayerStats({ stats }: PlayerStatsProps) {
               type="category"
               tickLine={false}
               axisLine={false}
-              tick={{ fill: 'hsl(var(--accent))', fontSize: 12 }}
+              tick={<CustomYAxisTick stats={stats} />}
               width={110}
             />
-            <Bar dataKey="level" fill="var(--color-level)" radius={[0, 4, 4, 0]} barSize={20}>
-               <LabelList dataKey="level" position="right" offset={10} className="fill-foreground" fontSize={12} formatter={(value: number) => `${value}%`} />
-            </Bar>
+            {stats.map((stat) => (
+               <Bar key={stat.name} dataKey="level" fill={stat.color} radius={[0, 4, 4, 0]} barSize={20} data={[stat]}>
+                 <LabelList dataKey="level" position="right" offset={10} className="fill-foreground" fontSize={12} formatter={(value: number) => `${value}%`} />
+               </Bar>
+            ))}
           </BarChart>
         </ResponsiveContainer>
       </ChartContainer>

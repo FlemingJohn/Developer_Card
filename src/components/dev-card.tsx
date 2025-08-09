@@ -39,11 +39,11 @@ const devData = {
   ],
   stats: {
     abilities: [
-      { name: 'Problem Solving', level: 95 },
-      { name: 'Dev Speed', level: 85 },
-      { name: 'Adaptability', level: 90 },
-      { name: 'Grasping Power', level: 92 },
-      { name: 'Productivity', level: 88 },
+      { name: 'Problem Solving', level: 95, icon: 'BrainCircuit', color: 'hsl(var(--chart-1))' },
+      { name: 'Dev Speed', level: 85, icon: 'Zap', color: 'hsl(var(--chart-2))' },
+      { name: 'Adaptability', level: 90, icon: 'GitBranch', color: 'hsl(var(--chart-3))' },
+      { name: 'Grasping Power', level: 92, icon: 'GraduationCap', color: 'hsl(var(--chart-4))' },
+      { name: 'Productivity', level: 88, icon: 'TrendingUp', color: 'hsl(var(--chart-5))' },
     ]
   }
 };
