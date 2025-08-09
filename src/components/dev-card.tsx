@@ -156,8 +156,8 @@ export function DevCard() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="text-accent border-accent/50 hover:bg-accent/20 hover:text-white" />
-                <CarouselNext className="text-accent border-accent/50 hover:bg-accent/20 hover:text-white" />
+                <CarouselPrevious className="text-accent border-accent/50 hover:bg-accent/20 hover:text-white -left-4" />
+                <CarouselNext className="text-accent border-accent/50 hover:bg-accent/20 hover:text-white -right-4" />
               </Carousel>
              )}
           </div>
