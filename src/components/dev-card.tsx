@@ -101,7 +101,7 @@ export function DevCard() {
                 <Badge
                   key={skill}
                   variant="outline"
-                  className="border-primary/30 bg-primary/10 text-accent transition-colors hover:bg-primary/20"
+                  className="border-primary/30 bg-primary/10 text-accent transition-all duration-200 hover:bg-primary/20 hover:shadow-md hover:shadow-primary/40 hover:scale-110"
                 >
                   {skill}
                 </Badge>
