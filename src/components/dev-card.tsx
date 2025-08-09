@@ -2,12 +2,11 @@
 'use client';
 
 import Image from 'next/image';
-import { Github, Linkedin, Link as LinkIcon, MessageSquare, Sparkles, Star, GitFork, User, BarChart } from 'lucide-react';
+import { Github, Linkedin, Link as LinkIcon, MessageSquare, User, BarChart } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
-import { eightBitify, EightBitifyOutput } from '@/ai/flows/eight-bit-flow';
 import { useToast } from '@/hooks/use-toast';
 import { AIChat } from './ai-chat';
 import { getGithubRepositories } from '@/services/github';
@@ -50,8 +49,6 @@ const devData = {
 };
 
 export function DevCard() {
-  const [bio, setBio] = useState(devData.bio);
-  const [isGenerating, setIsGenerating] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoadingProjects, setIsLoadingProjects] = useState(true);
@@ -77,23 +74,6 @@ export function DevCard() {
     };
     fetchProjects();
   }, [toast]);
-
-  const handleEightBitify = async () => {
-    setIsGenerating(true);
-    try {
-      const result: EightBitifyOutput = await eightBitify({ text: devData.bio });
-      setBio(result.text);
-    } catch (error) {
-      console.error(error);
-      toast({
-        title: 'Error',
-        description: 'Could not generate 8-bit bio. Please try again.',
-        variant: 'destructive',
-      });
-    } finally {
-      setIsGenerating(false);
-    }
-  };
 
   return (
     <>
@@ -136,17 +116,7 @@ export function DevCard() {
               </TabsList>
               <TabsContent value="player-info" className="mt-4 text-left bg-black/20 p-4 rounded-md border border-primary/20">
                  <div className="relative">
-                    <p className="text-sm text-foreground/80 max-w-lg">{bio}</p>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="absolute -top-2 -right-2 h-7 w-7 text-accent/80 hover:text-accent hover:bg-white/10"
-                      onClick={handleEightBitify}
-                      disabled={isGenerating}
-                      title="8-Bit My Bio"
-                    >
-                      <Sparkles className={`transition-transform duration-500 ${isGenerating ? 'animate-spin' : ''}`} />
-                    </Button>
+                    <p className="text-sm text-foreground/80 max-w-lg">{devData.bio}</p>
                   </div>
                   <div className="flex flex-wrap gap-2 mt-4">
                     {devData.skills.map((skill) => (
