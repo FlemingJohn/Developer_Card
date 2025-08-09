@@ -12,7 +12,7 @@ import { useToast } from '@/hooks/use-toast';
 import { AIChat } from './ai-chat';
 
 const devData = {
-  name: "Alex 'Arcade' Doe",
+  name: "Fleming John",
   title: "Pixel-Perfect Full-Stack Developer",
   bio: "Crafting digital experiences with a retro twist. I turn caffeine into clean, efficient, and visually stunning code. Ready to press start on a new project.",
   skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Firebase", "Solidity"],
