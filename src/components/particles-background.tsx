@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { type Container, type ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "tsparticles-slim";
-import { useTheme } from "next-themes";
 
 
 export function ParticlesBackground() {
