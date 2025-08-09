@@ -19,12 +19,12 @@ const devData = {
   socials: [
     {
       name: 'GitHub',
-      url: 'https://github.com',
+      url: 'https://github.com/FlemingJohn',
       icon: Github,
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com',
+      url: 'https://www.linkedin.com/in/fleming-john-0b4ab3263/',
       icon: Linkedin,
     },
     {
