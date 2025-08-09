@@ -10,6 +10,7 @@
 
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
+import { getGithubRepositories } from '@/services/github';
 
 const AskAssistantInputSchema = z.object({
   question: z.string().describe('The question from the user.'),
@@ -26,11 +27,36 @@ export async function askAssistant(input: AskAssistantInput): Promise<AskAssista
   return askAssistantFlow(input);
 }
 
+const getGithubProjectsTool = ai.defineTool(
+  {
+    name: 'getGithubProjects',
+    description: "Get a list of the developer's public projects from GitHub.",
+    inputSchema: z.object({}),
+    outputSchema: z.array(
+      z.object({
+        name: z.string(),
+        description: z.string().nullable(),
+        url: z.string().url(),
+        stars: z.number(),
+      })
+    ),
+  },
+  async () => {
+    // We are hardcoding the username for this example.
+    // In a real-world scenario, you might pass this in.
+    return await getGithubRepositories('FlemingJohn');
+  }
+);
+
+
 const prompt = ai.definePrompt({
   name: 'assistantPrompt',
   input: { schema: AskAssistantInputSchema },
   output: { schema: AskAssistantOutputSchema },
+  tools: [getGithubProjectsTool],
   prompt: `You are a helpful AI assistant for a developer. Your goal is to answer questions about the developer based on the provided data. Be friendly, professional, and concise.
+
+If the user asks about the developer's projects, use the getGithubProjects tool to get the latest project information from GitHub.
 
 Here is the developer's data:
 \`\`\`json
