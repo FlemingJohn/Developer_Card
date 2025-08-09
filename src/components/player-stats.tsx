@@ -1,0 +1,45 @@
+
+'use client';
+
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, LabelList } from 'recharts';
+import { ChartContainer } from '@/components/ui/chart';
+
+interface PlayerStatsProps {
+  stats: {
+    frameworks: { name: string; level: number }[];
+  };
+}
+
+const chartConfig = {
+  level: {
+    label: "Mastery",
+    color: "hsl(var(--primary))",
+  },
+};
+
+export function PlayerStats({ stats }: PlayerStatsProps) {
+  return (
+    <div>
+      <h3 className="text-lg font-headline text-center text-accent mb-4">Framework Mastery</h3>
+      <ChartContainer config={chartConfig} className="w-full h-[250px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={stats.frameworks} layout="vertical" margin={{ left: 10, right: 40 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--primary) / 0.2)" />
+            <XAxis type="number" domain={[0, 100]} hide />
+            <YAxis
+              dataKey="name"
+              type="category"
+              tickLine={false}
+              axisLine={false}
+              tick={{ fill: 'hsl(var(--accent))', fontSize: 12 }}
+              width={80}
+            />
+            <Bar dataKey="level" fill="var(--color-level)" radius={4}>
+               <LabelList dataKey="level" position="right" offset={10} className="fill-foreground" fontSize={12} />
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </ChartContainer>
+    </div>
+  );
+}
