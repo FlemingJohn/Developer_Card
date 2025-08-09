@@ -160,7 +160,7 @@ export function DevCard() {
                     ))}
                   </div>
               </TabsContent>
-              <TabsContent value="player-stats" className="mt-4 bg-black/20 p-4 rounded-md border border-primary/20">
+              <TabsContent value="player-stats" className="mt-4 bg-black/20 p-6 rounded-md border border-primary/20">
                 <PlayerStats stats={devData.stats} />
               </TabsContent>
             </Tabs>
@@ -208,4 +208,3 @@ export function DevCard() {
     </>
   );
 }
-
