@@ -130,7 +130,7 @@ export function DevCard() {
                     ))}
                   </div>
               </TabsContent>
-              <TabsContent value="player-stats" className="mt-4 text-left bg-black/20 p-2 rounded-md border border-primary/20">
+              <TabsContent value="player-stats" className="mt-4 text-left bg-black/20 p-4 rounded-md border border-primary/20">
                 <PlayerStats stats={devData.stats.abilities} />
               </TabsContent>
             </Tabs>
@@ -156,8 +156,8 @@ export function DevCard() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="text-accent border-accent/50 hover:bg-accent/20 hover:text-white -left-4" />
-                <CarouselNext className="text-accent border-accent/50 hover:bg-accent/20 hover:text-white -right-4" />
+                <CarouselPrevious className="text-accent border-accent/50 hover:bg-accent/20 hover:text-white -left-2 md:-left-4" />
+                <CarouselNext className="text-accent border-accent/50 hover:bg-accent/20 hover:text-white -right-2 md:-right-4" />
               </Carousel>
              )}
           </div>
