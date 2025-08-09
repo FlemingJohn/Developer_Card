@@ -10,12 +10,15 @@ export function ParticlesBackground() {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
+    if (init) {
+      return;
+    }
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
     }).then(() => {
       setInit(true);
     });
-  }, []);
+  }, [init]);
 
   const particlesLoaded = async (container?: Container): Promise<void> => {
     // console.log("particles.js loaded", container);
