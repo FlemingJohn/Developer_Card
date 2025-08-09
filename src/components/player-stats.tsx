@@ -4,10 +4,13 @@
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, LabelList } from 'recharts';
 import { ChartContainer } from '@/components/ui/chart';
 
+interface PlayerStat {
+  name: string;
+  level: number;
+}
+
 interface PlayerStatsProps {
-  stats: {
-    frameworks: { name: string; level: number }[];
-  };
+  stats: PlayerStat[];
 }
 
 const chartConfig = {
@@ -20,10 +23,10 @@ const chartConfig = {
 export function PlayerStats({ stats }: PlayerStatsProps) {
   return (
     <div>
-      <h3 className="text-lg font-headline text-center text-accent mb-4">Framework Mastery</h3>
+      <h3 className="text-lg font-headline text-center text-accent mb-4">Core Abilities</h3>
       <ChartContainer config={chartConfig} className="w-full h-[250px]">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={stats.frameworks} layout="vertical" margin={{ left: 10, right: 40, top: 5, bottom: 5 }}>
+          <BarChart data={stats} layout="vertical" margin={{ left: 10, right: 40, top: 5, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--primary) / 0.1)" horizontal={true} vertical={false} />
             <XAxis type="number" domain={[0, 100]} hide />
             <YAxis
@@ -32,7 +35,7 @@ export function PlayerStats({ stats }: PlayerStatsProps) {
               tickLine={false}
               axisLine={false}
               tick={{ fill: 'hsl(var(--accent))', fontSize: 12 }}
-              width={80}
+              width={110}
             />
             <Bar dataKey="level" fill="var(--color-level)" radius={[0, 4, 4, 0]} barSize={20}>
                <LabelList dataKey="level" position="right" offset={10} className="fill-foreground" fontSize={12} formatter={(value: number) => `${value}%`} />

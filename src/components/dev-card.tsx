@@ -38,12 +38,12 @@ const devData = {
     },
   ],
   stats: {
-    frameworks: [
-      { name: 'React/Next.js', level: 90 },
-      { name: 'Node.js', level: 85 },
-      { name: 'Firebase', level: 80 },
-      { name: 'Tailwind CSS', level: 95 },
-      { name: 'Solidity', level: 70 },
+    abilities: [
+      { name: 'Problem Solving', level: 95 },
+      { name: 'Dev Speed', level: 85 },
+      { name: 'Adaptability', level: 90 },
+      { name: 'Grasping Power', level: 92 },
+      { name: 'Productivity', level: 88 },
     ]
   }
 };
@@ -131,7 +131,7 @@ export function DevCard() {
                   </div>
               </TabsContent>
               <TabsContent value="player-stats" className="mt-4 bg-black/20 p-6 rounded-md border border-primary/20">
-                <PlayerStats stats={devData.stats} />
+                <PlayerStats stats={devData.stats.abilities} />
               </TabsContent>
             </Tabs>
           </div>
