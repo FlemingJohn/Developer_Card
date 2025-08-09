@@ -13,7 +13,7 @@ import { AIChat } from './ai-chat';
 
 const devData = {
   name: "Fleming John",
-  title: "Pixel-Perfect Full-Stack Developer",
+  title: "Polygot developer",
   bio: "Crafting digital experiences with a retro twist. I turn caffeine into clean, efficient, and visually stunning code. Ready to press start on a new project.",
   skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Firebase", "Solidity"],
   socials: [
